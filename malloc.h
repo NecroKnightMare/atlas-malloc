@@ -10,8 +10,8 @@
 
 typedef struct heap_size
 {
-    size_t size; /*needed for allocation*/
-    /*struct heap_size *next; next memory allocation*/
+	size_t size; /*needed for allocation*/
+	/*struct heap_size *next; next memory allocation*/
 } heap_t;
 
 
