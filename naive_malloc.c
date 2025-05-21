@@ -23,10 +23,10 @@ void *naive_malloc(size_t size)
     return (void *)((char *)header + sizeof(heap_t));
 }
 /*
-*int main(void)
-*{
-*    void *ptr = naive_malloc(100);
-*   printf("Allocated memory at: %p\n", ptr);
-*  return 0;
-*}
+int main(void)
+{
+    void *ptr = naive_malloc(100);
+    printf("Allocated memory at: %p\n", ptr);
+    return 0;
+}
 */
