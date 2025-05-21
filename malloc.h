@@ -6,8 +6,7 @@
 # include <string.h>
 
 /*allocate alignment for pages size*/
-#define ALIGN(size, alignment) (((size) + (alignment - 1)) & ~(alignment - 1))
-
+#define HEAP_SIZE (4 * 1024)
 typedef struct heap_size
 {
     size_t size; /*needed for allocation*/
