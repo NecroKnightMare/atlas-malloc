@@ -5,60 +5,28 @@
 #include <stddef.h>
 #include "malloc.h"
 
-// void *naive_malloc(size_t size)
-// {
-//     size_t pagesize = sysconf(_SC_PAGESIZE);
-//     size_t total_size = ALIGN(size + sizeof(heap_t), pagesize);
-//     void *ptr = sbrk(total_size);
-
-//     if (ptr == (void *)-1)
-//         return NULL;
-
-//     /* Store metadata in heap header */
-//     heap_t *header = (heap_t *)ptr;
-//     header->size = total_size;
-
-//     /* Return pointer to user memory (after heap header) */
-//     /*return (void *)(header + 1);*/
-//     return (void *)((char *)header + sizeof(heap_t));
-// }
-
-//  int main(void)
-//  {
-//      void *ptr = naive_malloc(100);
-//     printf("Allocated memory at: %p\n", ptr);
-//    return 0;
-// }
-
 void *naive_malloc(size_t size)
 {
-    static void *heap_start = NULL;
-    static size_t used = 0;
+    size_t pagesize = sysconf(_SC_PAGESIZE);
+    size_t total_size = ALIGN(size + sizeof(heap_t), pagesize);
+    void *ptr = sbrk(total_size);
 
-    if (heap_start == NULL)
-    {
-        heap_start = sbrk(HEAP_SIZE); // Allocate once
-        if (heap_start == (void *)-1)
-            return NULL;
-    }
-
-    if (used + size > HEAP_SIZE) // Ensure we don’t exceed the block
+    if (ptr == (void *)-1)
         return NULL;
 
-    void *ptr = (char *)heap_start + used;
-    used += size;
+    /* Store metadata in heap header */
+    heap_t *header = (heap_t *)ptr;
+    header->size = total_size;
 
-    return ptr;
+    /* Return pointer to user memory (after heap header) */
+    /*return (void *)(header + 1);*/
+    return (void *)((char *)header + sizeof(heap_t));
 }
-
-// int main(void)
-// {
-//     void *ptr = naive_malloc(100);
-//     if (ptr == NULL)
-//     {
-//         printf("Memory allocation failed\n");
-//         return 1;
-//     }
-//     printf("Allocated memory at: %p\n", ptr);
-//     return 0;
-// }
+/*
+*int main(void)
+*{
+*    void *ptr = naive_malloc(100);
+*   printf("Allocated memory at: %p\n", ptr);
+*  return 0;
+*}
+*/
