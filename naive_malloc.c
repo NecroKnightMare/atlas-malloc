@@ -20,7 +20,7 @@ void *naive_malloc(size_t size)
 
     /* Return pointer to user memory (after heap header) */
     /*return (void *)(header + 1);*/
-    return (void *)(((uintptr_t)(header + 1) + (sizeof(void *) - 1)) & ~(sizeof(void *) - 1));
+    return (ptr);
 }
 
 //  int main(void)
