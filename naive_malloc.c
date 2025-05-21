@@ -21,9 +21,9 @@ void *naive_malloc(size_t size)
     return (void *)(header + 1);
 }
 
-int main(void)
-{
-    void *ptr = naive_malloc(100);
-    printf("Allocated memory at: %p\n", ptr);
-    return 0;
-}
+// int main(void)
+// {
+//     void *ptr = naive_malloc(100);
+//     printf("Allocated memory at: %p\n", ptr);
+//     return 0;
+// }
