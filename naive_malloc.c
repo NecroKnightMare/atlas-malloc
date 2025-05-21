@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdint.h>
 #include <stddef.h>
 #include "malloc.h"
 
@@ -18,12 +19,13 @@ void *naive_malloc(size_t size)
     header->size = total_size;
 
     /* Return pointer to user memory (after heap header) */
-    return (void *)(header + 1);
+    /*return (void *)(header + 1);*/
+    return (void *)(((uintptr_t)(header + 1) + (sizeof(void *) - 1)) & ~(sizeof(void *) - 1));
 }
 
-// int main(void)
-// {
-//     void *ptr = naive_malloc(100);
+//  int main(void)
+//  {
+//      void *ptr = naive_malloc(100);
 //     printf("Allocated memory at: %p\n", ptr);
-//     return 0;
+//    return 0;
 // }
