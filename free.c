@@ -1,5 +1,5 @@
 #include "malloc.h"
-#include <stdlib.h>
+#include <unistd.h>
 
 void _free(void *ptr) {
     if (ptr == NULL) {
@@ -7,7 +7,8 @@ void _free(void *ptr) {
     }
     heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));
 
-    free(ptr); // Use the standard free function to release memory
+    // free(ptr); // Use the standard free function to release memory
+    header->size = 0; 
 }
 // int main (void)
 // {
