@@ -5,6 +5,7 @@ void _free(void *ptr) {
     if (ptr == NULL) {
         return; // Avoid freeing a null pointer
     }
+    heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));
 
     free(ptr); // Use the standard free function to release memory
 }
