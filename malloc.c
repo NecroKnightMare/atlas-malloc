@@ -31,7 +31,6 @@ void *_malloc(size_t size)
 	/*return ((void *)(header + 1));*/
 	return ((void *)((char *)header + sizeof(heap_t)));
 }
-
 /* int main(void)*/
 /* {*/
 /*     void *ptr = _malloc(100);*/
