@@ -28,12 +28,11 @@ void *_malloc(size_t size)
 	header->size = total_size;
 
 	/* Return pointer to user memory (after heap header) */
-	/*return ((void *)(header + 1));*/
 	return ((void *)((char *)header + sizeof(heap_t)));
 }
-int main(void)
-{
-	void *ptr = _malloc(100);
-	printf("Allocated memory at: %p\n", ptr);
-	return 0;
-}
+// int main(void)
+// {
+// 	void *ptr = _malloc(100);
+// 	printf("Allocated memory at: %p\n", ptr);
+// 	return 0;
+// }
