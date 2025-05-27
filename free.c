@@ -8,7 +8,7 @@ void _free(void *ptr) {
     heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));
 
     // free(ptr); // Use the standard free function to release memory
-    header->size = 0; 
+    header->size = 1; 
 }
 // int main (void)
 // {
