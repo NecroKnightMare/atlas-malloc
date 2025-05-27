@@ -11,7 +11,8 @@
 typedef struct heap_size
 {
 	size_t size; /*needed for allocation*/
-	/*struct heap_size *next; next memory allocation*/
+	int is_free;
+	struct heap_size *next;
 } heap_t;
 
 
