@@ -6,16 +6,21 @@
 # include <string.h>
 
 /*allocate alignment for pages size*/
-#define ALIGN(size, alignment) (((size) + (alignment - 1)) & ~(alignment - 1))
+// #define ALIGN(size, alignment) (((size) + (alignment - 1)) & ~(alignment - 1))
+#define align(offset, align) ((offset + (align - 1)) & -align)
 
 typedef struct heap_size
 {
 	size_t size; /*needed for allocation*/
 	// int is_free;
 	// struct heap_size *next;
+	size_t *prev;
 } heap_t;
 
 
+void set_hdr(char *chunk, size_t chunk_size, size_t *excess_mem);/*naive malloc*/
+void *find_unused(char *heap_start, size_t call_nb);/*naive malloc*/
+void *extend(size_t chunk_size, size_t *excess_mem);/*naive malloc*/
 void *naive_malloc(size_t size); /*task 0*/
 void *_malloc(size_t size); /*task 1*/
 void _free(void *ptr); /*task 2*/
