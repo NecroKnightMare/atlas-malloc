@@ -15,11 +15,11 @@ typedef struct heap_size
 	size_t *prev; /*pointer to previous size*/
 } heap_t;
 
-typedef struct block_meta
-{
-	size_t size; /*size of the block*/
-	struct block_meta *next; /*pointer to next block*/
-} block_meta_t;
+// typedef struct block_meta
+// {
+// 	size_t size; /*size of the block*/
+// 	struct block_meta *next; /*pointer to next block*/
+// } block_meta_t;
 
 
 void _header(char *chunk, size_t chunk_size, size_t *excess_mem);/*naive malloc*/
