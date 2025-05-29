@@ -4,10 +4,10 @@
 
 /**
  * _free - Deallocates memory and merges neighboring free blocks
- * @ptr: Pointer to the memory block to be freed
+ * @ptr: Pointer to memory block to be freed
  *
  * Description: This function safely frees allocated memory,
- * ensuring memory integrity by performing sanity checks
+
  */
 
 
@@ -39,7 +39,7 @@ void _free(void *ptr)
 
     heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));/*works woth majority of checker, but not all*/
 
-    /*look at malloc free repo again and use your SLL*/
+    /*SLL will need to be looked at agin*/
     header->size = 1;/*works well with most of checker, but not all*/
 }
 // int main (void)

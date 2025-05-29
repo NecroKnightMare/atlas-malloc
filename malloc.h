@@ -11,20 +11,21 @@
 
 typedef struct heap_size
 {
-	size_t size; /*needed for allocation*/
-	size_t *prev; /*pointer to previous size*/
+	size_t size;
+	size_t *prev;
 } heap_t;
 
+/*free logic--doesn't work yet*/
 // typedef struct block_meta
 // {
-// 	size_t size; /*size of the block*/
-// 	struct block_meta *next; /*pointer to next block*/
+// 	size_t size;
+// 	struct block_meta *prev;
 // } block_meta_t;
 
 
-void _header(char *chunk, size_t chunk_size, size_t *excess_mem);/*naive malloc*/
-void *_unused(char *heap_start, size_t call_nb);/*naive malloc*/
-void *extend(size_t chunk_size, size_t *excess_mem);/*naive malloc*/
+void _header(char *chunk, size_t chunk_size, size_t *overflow);/*naive malloc*/
+void *empty_space(char *heap_start, size_t call_count);/*naive malloc*/
+void *req_memory(size_t chunk_size, size_t *overflow);/*naive malloc*/
 void *naive_malloc(size_t size); /*task 0*/
 void *_malloc(size_t size); /*task 1*/
 void _free(void *ptr); /*task 2*/
