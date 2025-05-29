@@ -89,9 +89,9 @@ void *naive_malloc(size_t size)
 	++call_count;
 	return ((char *)chunk + hdr_size);
 }
-int main(void)
-{
-    void *ptr = naive_malloc(100);
-    printf("Allocated memory at: %p\n", ptr);
-    return 0;
-}
+// int main(void)
+// {
+//     void *ptr = naive_malloc(100);
+//     printf("Allocated memory at: %p\n", ptr);
+//     return 0;
+// }
