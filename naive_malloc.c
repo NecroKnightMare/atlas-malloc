@@ -8,12 +8,12 @@
 
 
 /**
- * set_hdr - set chunk headers
+ * _header - set chunk headers
  * @chunk: pointer to start of chunk
  * @chunk_size: size of chunk
  * @excess_mem: pointer to variable tracking excess memory
  */
-void set_hdr(char *chunk, size_t chunk_size, size_t *excess_mem)
+void _header(char *chunk, size_t chunk_size, size_t *excess_mem)
 {
 	*excess_mem -= chunk_size;
 	*(size_t *)chunk = chunk_size;
@@ -85,7 +85,7 @@ void *naive_malloc(size_t size)
 			if (!extend(chunk_size, &excess_mem))
 				return (NULL);
 	}
-	set_hdr(chunk, chunk_size, &excess_mem);
+	_header(chunk, chunk_size, &excess_mem);
 	++call_nb;
 	return ((char *)chunk + hdr_size);
 }

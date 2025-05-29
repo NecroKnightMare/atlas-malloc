@@ -7,7 +7,7 @@ void _free(void *ptr) {
     }
     heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));
 
-    // free(ptr); // Use the standard free function to release memory
+   /*look at malloc free repo again and use your SLL*/
     header->size = 1; 
 }
 // int main (void)

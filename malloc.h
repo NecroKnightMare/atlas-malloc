@@ -18,7 +18,7 @@ typedef struct heap_size
 } heap_t;
 
 
-void set_hdr(char *chunk, size_t chunk_size, size_t *excess_mem);/*naive malloc*/
+void _header(char *chunk, size_t chunk_size, size_t *excess_mem);/*naive malloc*/
 void *find_unused(char *heap_start, size_t call_nb);/*naive malloc*/
 void *extend(size_t chunk_size, size_t *excess_mem);/*naive malloc*/
 void *naive_malloc(size_t size); /*task 0*/
