@@ -21,13 +21,13 @@ void _header(char *chunk, size_t chunk_size, size_t *excess_mem)
 }
 
 /**
- * find_unused - find unused chunk block
+ * _unused - find unused chunk block
  * @heap_start: pointer to heap start
  * @call_nb: specifies how many times malloc has been called
  *
  * Return: pointer to start of unused chunk
  */
-void *find_unused(char *heap_start, size_t call_nb)
+void *_unused(char *heap_start, size_t call_nb)
 {
 	while (call_nb > 0)
 	{
@@ -79,7 +79,7 @@ void *naive_malloc(size_t size)
 	}
 	else
 	{
-		chunk = find_unused(heap_start, call_nb);
+		chunk = _unused(heap_start, call_nb);
 		excess_mem = *(size_t *)chunk;
 		if (excess_mem < chunk_size + hdr_size)
 			if (!extend(chunk_size, &excess_mem))
