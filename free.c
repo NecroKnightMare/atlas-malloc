@@ -42,13 +42,13 @@ void _free(void *ptr)
     /*look at malloc free repo again and use your SLL*/
     header->size = 1;/*works well with most of checker, but not all*/
 }
-int main (void)
-{
-    void *ptr = malloc(100); // Allocate 100 bytes of memory
-    printf("Allocated memory at: %p\n", ptr);
+// int main (void)
+// {
+//     void *ptr = malloc(100); // Allocate 100 bytes of memory
+//     printf("Allocated memory at: %p\n", ptr);
 
-    _free(ptr); // Free the allocated memory
-    printf("Memory freed.\n");
+//     _free(ptr); // Free the allocated memory
+//     printf("Memory freed.\n");
 
-    return 0;
-}
+//     return 0;
+// }
