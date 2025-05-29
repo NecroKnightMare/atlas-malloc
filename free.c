@@ -1,14 +1,46 @@
 #include "malloc.h"
 #include <unistd.h>
 
-void _free(void *ptr) {
-    if (ptr == NULL) {
-        return; // Avoid freeing a null pointer
-    }
-    heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));
 
-   /*look at malloc free repo again and use your SLL*/
-    header->size = 1; 
+/**
+ * _free - Deallocates memory and merges neighboring free blocks
+ * @ptr: Pointer to the memory block to be freed
+ *
+ * Description: This function safely frees allocated memory,
+ * ensuring memory integrity by performing sanity checks
+ */
+
+
+void _free(void *ptr)
+{
+    block_meta_t *header,*next;
+
+    if (ptr == NULL) {
+        return;
+    }
+    header = (block_meta_t *)((char *)ptr - sizeof(block_meta_t));
+
+    /*check size before freeing*/
+    if (header->size == 0) {
+        fprintf(stderr, "Error: Invalid block\n");
+        return;
+    }
+
+    /*mark as free*/
+    header->size |= 1;
+
+    /*Check if next block is free to merge*/
+    next = (block_meta_t *)((char *)header + (header->size & ~1));
+    if ((next->size & 1) == 1) {
+        header->size += next->size; /*Merge neighboring free blocks*/
+        header->next = next->next;
+    }
+
+
+    /*heap_t *header = (heap_t *)((char *)ptr - sizeof(heap_t));works woth majority of checker, but not all*/
+
+    /*look at malloc free repo again and use your SLL*/
+    /*header->size = 1;works well with most of checker, but not all*/
 }
 // int main (void)
 // {
